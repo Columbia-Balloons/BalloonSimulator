@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onload="draw()">
+    <div id="container">
+        <div id="screen">
+            <canvas id="myCanvas"></canvas>
+        </div>
+        <div id="stats">
+            <h3 id='height'>Height: 1</h3>
+            <h3 id='speed'>Speed: 0</h3>
+        </div>
+    </div>
+
+    <div id="clear">
+        <h1>Click the button to launch the balloon!</h1>
+        <button id="launch" onClick="moveup()">Launch</button>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
