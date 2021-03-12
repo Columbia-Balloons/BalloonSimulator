@@ -61,7 +61,7 @@ function pressure(h, T) {
         p = 2.488 * (T / 216.6)**(-11.388);
     }
 
-    return p;
+    return p / 101.325;
 }
 
 function stats(h, v, diameter, mass, m_gas, delta_t) {

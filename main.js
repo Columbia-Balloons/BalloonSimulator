@@ -41,22 +41,26 @@ function draw() {
 }
 
 
-let height = 5;
-let velocity = 1;
-let diameter = 1.82;
-let mass = 1;
-let m_gas = 5;
+let height = 0;
+let velocity = 0;
+let diameter = 2.4;
+let mass = 2;
+let m_gas = 0.164 * (4/3) * Math.PI * ((diameter/2) ** 3);
 let time = 0;
 
 function moveup() {
     moving = true;
-    window.requestAnimationFrame(loop);
+    setInterval(function() {
+        loop();
+    }, 10);
+    //window.requestAnimationFrame(loop);
+
 }
 
 
 function loop() {
     time += 60;
-    let info = stats(height, velocity, diameter, mass, m_gas, 1);
+    let info = stats(height, velocity, diameter, mass, m_gas, 0.01);
     height = info.height;
     velocity = info.velocity;
 
@@ -64,7 +68,7 @@ function loop() {
     let displayHeight = nfObject.format(height);
     heightElement.innerText = "Height: " + displayHeight;
     speedElement.innerText = "Speed: " + nfObject.format(velocity);
-    int_height = Math.ceil(displayHeight / 1000000);
+    int_height = Math.ceil(height);
     if (int_height + canvas.height > img.height) {
         return;
     }
@@ -82,6 +86,6 @@ function loop() {
     */
 
     ctx.drawImage(balloon, center, balloonHeight);
-    window.requestAnimationFrame(loop);
+    //window.requestAnimationFrame(loop);
 }
 
