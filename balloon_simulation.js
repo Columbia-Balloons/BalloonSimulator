@@ -3,6 +3,7 @@ const g = 9.81;
 function lift(volume, h, rho_air, rho_gas) {
 	const m_displaced = rho_air * volume;
 	const m_gas = rho_gas * volume;
+
 	return (m_displaced - m_gas) * g;
 }
 
