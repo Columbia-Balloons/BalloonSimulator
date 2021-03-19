@@ -11,7 +11,7 @@ let moving = false;
 
 let diff = 0;
 let img = new Image();
-img.src = "background.png";
+img.src = "skylongwithground.png";
 
 let balloon = new Image();
 balloon.src = "BackgroundBalloon.png";
@@ -52,7 +52,7 @@ function moveup() {
     moving = true;
     setInterval(function() {
         loop();
-    }, 10);
+    }, 3);
     //window.requestAnimationFrame(loop);
 
 }
@@ -60,7 +60,7 @@ function moveup() {
 
 function loop() {
     time += 60;
-    let info = stats(height, velocity, diameter, mass, m_gas, 0.01);
+    let info = stats(height, velocity, diameter, mass, m_gas, 0.3);
     height = info.height;
     velocity = info.velocity;
 
@@ -68,7 +68,7 @@ function loop() {
     let displayHeight = nfObject.format(height);
     heightElement.innerText = "Height: " + displayHeight;
     speedElement.innerText = "Speed: " + nfObject.format(velocity);
-    int_height = Math.ceil(height);
+    int_height = Math.ceil(height / 4);
     if (int_height + canvas.height > img.height) {
         return;
     }
