@@ -1,6 +1,6 @@
 function falling(h, v, parachute_d, mass, delta_t) {
 	const g = 9.81;
-	const Cd = 0.25;
+	const Cd = 0.75;
 	const area = Math.PI * (parachute_d / 2)**2;
 	const rho_air = air_density(h);
 	

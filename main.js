@@ -14,7 +14,7 @@ let img = new Image();
 img.src = "skylongwithground.png";
 
 let balloon = new Image();
-balloon.src = "BackgroundBalloon.png";
+balloon.src = "balloon.png";
 let center;
 let balloonHeight;
 
@@ -47,6 +47,7 @@ let diameter = 2.4;
 let mass = 2;
 let m_gas = 0.164 * (4/3) * Math.PI * ((diameter/2) ** 3);
 let time = 0;
+let isFalling = false;
 
 function moveup() {
     moving = true;
@@ -60,11 +61,31 @@ function moveup() {
 
 function loop() {
     time += 60;
+    if (isFalling) {
+        if (height <= 10) {
+            return;
+        }
+        fallingStats = falling(height, velocity, 3, mass, 0.3);
+        height = fallingStats.height;
+        velocity = fallingStats.velocity;
+        let displayHeight = nfObject.format(height);
+        heightElement.innerText = "Height: " + displayHeight;
+        speedElement.innerText = "Speed: " + nfObject.format(velocity);
+        int_height = Math.ceil(height / 4);
+        ctx.drawImage(img, 0, diff + int_height, canvas.width, img.height);
+        ctx.drawImage(balloon, center, balloonHeight);
+        return;
+    }
     let info = stats(height, velocity, diameter, mass, m_gas, 0.3);
     height = info.height;
     velocity = info.velocity;
-
-
+    diameter = info.diameter;
+    let newVolume = (info.diameter / 2) **3 * (4/3) * Math.PI;
+    if (newVolume > (4/3) * Math.PI * (12 ** 3)) {
+        isFalling = true;
+        velocity = 0;
+        return;
+    }
     let displayHeight = nfObject.format(height);
     heightElement.innerText = "Height: " + displayHeight;
     speedElement.innerText = "Speed: " + nfObject.format(velocity);
