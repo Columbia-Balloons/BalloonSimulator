@@ -7,22 +7,19 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
     <body onload="draw()">
-        <audio controls autoplay loop>
+        <audio autoplay loop>
             <source src="FlightTheme.mp3" type="audio/mpeg" style="display:none;">
           Your browser does not support the audio element.
         </audio>
-        <div id="container">
-            <div id="screen">
-                <canvas id="myCanvas"></canvas>
-            </div>
+        <div id="container" style="position: relative">
+            <canvas id="myCanvas"></canvas>
             <div id="stats">
                 <h3 id="height">Height: 1</h3>
-                <h3 id="speed">Speed: 0</h3>
+                <h3 id="speed">Velocity: 0</h3>
+                <h3 id="acc">Acceleration: 0</h3>
             </div>
         </div>
-
         <div id="clear">
-            <h1>Click the button to launch the balloon!</h1>
             <button id="launch" onClick="moveup()">Launch</button>
         </div>
         <script src="balloon_simulation.js"></script>
