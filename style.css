@@ -43,9 +43,24 @@ canvas {
     border-radius: 4px;
     cursor: pointer;
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 #launch:hover {
     background-color: #ff8c00;
+}
+
+.userInput {
+    margin-left: 15px;
+    margin-top: 15px;
+    display: inline-block;
+    font-size: 20px;
+}
+
+div label {
+    display: block;
+}
+
+input {
+    font-size: 20px;
 }

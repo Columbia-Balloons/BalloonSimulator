@@ -6,6 +6,8 @@ var ctx = canvas.getContext("2d");
 const heightElement = document.getElementById("height");
 const speedElement = document.getElementById("speed");
 const accelerationElement = document.getElementById("acc");
+const userMass = document.getElementById("userMass");
+const userDiameter = document.getElementById("userDiameter");
 
 const nfObject = new Intl.NumberFormat("en-US"); // Used for number formatting
 let moving = false;
@@ -46,6 +48,25 @@ let isFalling = false;
 
 // Sets up the continuous call for the main balloon loop function
 function moveup() {
+    let m = userMass.value.trim();
+    let d = userDiameter.value.trim();
+    if (m === "" || d === "") {
+        alert('Do not leave the mass or diameter empty.');
+        return;
+    }
+    if (isNaN(m) || isNaN(d)) {
+        alert('Please enter a valid number for the mass and the diameter.');
+        return;
+    }
+    mass = parseFloat(m);
+    diameter = parseFloat(d);
+    m_gas = 0.164 * (4/3) * Math.PI * ((diameter/2) ** 3);
+
+    if (mass <= 0 || diameter <= 0) {
+        alert('Please enter numbers that are greater than zero.');
+        return;
+    }
+
     moving = true;
     setInterval(function() {
         loop();
